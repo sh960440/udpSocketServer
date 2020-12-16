@@ -35,7 +35,7 @@ def connectionLoop(sock):
             print (data)
             clients[addr] = {}
             clients[addr]['lastBeat'] = datetime.now()
-            clients[addr]['position'] = {'X':0,'Y':0, 'Z': 0.0}
+            clients[addr]['position'] = {'X': 0,'Y': 0, 'Z': 0}
             message = {"cmd": 3,"id":str(addr)}
             m = json.dumps(message)
             sock.sendto(bytes(m,'utf8'), (addr[0],addr[1]))
@@ -46,7 +46,7 @@ def connectionLoop(sock):
          if 'heartbeat' in data['cmd']:
             clients[addr] = {}
             clients[addr]['lastBeat'] = datetime.now()
-            clients[addr]['position'] = {'X':0,'Y':0, 'Z': 0.0}
+            clients[addr]['position'] = {'X': 0,'Y': 0, 'Z': 0}
             message = {"cmd": 0,"id":str(addr)}
             m = json.dumps(message)
             for c in clients:
